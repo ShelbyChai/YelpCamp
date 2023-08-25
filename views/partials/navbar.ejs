@@ -27,5 +27,19 @@
                 </li>
             </ul>
         </div>
+        <div class="navbar-nav ms-auto d-flex flex-row">
+            <% if(!currentUser) { %>
+            <li class="nav-item"></li>
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item"></li>
+                <a class="nav-link" href="/register">Register</a>
+            </li>
+            <% } else { %>
+            <li class="nav-item"></li>
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } %>
+        </div>
     </div>
 </nav>
