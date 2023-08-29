@@ -12,6 +12,7 @@
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
             crossorigin="anonymous" />
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/stylesheets/app.css" />
 
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
         <script
@@ -28,7 +29,9 @@
     </head>
     <body class="d-flex flex-column vh-100">
         <%- include('../partials/navbar.ejs')%>
-        <main class="container mt-5"><%- include('../partials/flash.ejs')%><%- body %></main>
+        <main class="container flex-grow-1 d-flex flex-column justify-content-center">
+            <%- include('../partials/flash.ejs')%> <%- body %>
+        </main>
         <%- include('../partials/footer.ejs')%>
     </body>
 </html>

@@ -1,7 +1,8 @@
 <% layout('layout/boilerplate') %>
-<div class="row mb-5">
+
+<div class="row">
     <h1 class="text-center">Edit Campground</h1>
-    <div class="col-6 offset-3">
+    <div class="col-md-6 offset-md-3">
         <form
             action="/campgrounds/<%= campground._id %>?_method=PUT"
             method="POST"
@@ -51,7 +52,9 @@
                     type="text"
                     id="description"
                     name="campground[description]"
-                    required><%= campground.description %></textarea>
+                    required>
+<%= campground.description %></textarea
+                >
             </div>
             <div class="mb-3">
                 <label for="formFileMultiple" class="form-label">Add More Image(s)</label>
@@ -64,10 +67,10 @@
                     <label for="image-<%= i %>">Delete</label>
                 </div>
                 <input
-                id="image-<%= i %>"
-                type="checkbox"
-                name="deleteImages[]"
-                value="<%= img.filename %>" />
+                    id="image-<%= i %>"
+                    type="checkbox"
+                    name="deleteImages[]"
+                    value="<%= img.filename %>" />
                 <% }) %>
             </div>
             <div class="mb-3">
