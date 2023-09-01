@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="/stylesheets/card.css" />
+
+<div class="card">
+    <a class="col text-reset" href="/campgrounds/<%= campground._id %>">
+        <% if(campground.images.length) { %>
+        <div id="carousel<%= campground._id%>" class="carousel slide">
+            <div class="carousel-indicators">
+                <% campground.images.forEach((imgs, i) => { %>
+                <button
+                    type="button"
+                    data-bs-target="#carousel<%= campground._id%>"
+                    data-bs-slide-to="<%= i %>"
+                    class="<%= i === 0 ? 'active' : '' %>"
+                    aria-current="true"
+                    aria-label="Slide <%= i %>"></button>
+                <% }) %>
+            </div>
+            <div class="carousel-inner">
+                <% campground.images.forEach((imgs, i) => { %>
+                <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+                    <img
+                        src="<%= imgs.url %>"
+                        class="carousel-img d-block w-100"
+                        alt="Slide <%= i %>" />
+                </div>
+                <% }) %>
+            </div>
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#carousel<%= campground._id%>"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <% } else { %>
+        <img
+            class="card-img-top"
+            alt="images"
+            src="https://www.orientalfire.co.za/wp-content/themes/panama/assets/img/empty/600x600.png" />
+        <% } %>
+        <div class="card-body">
+            <h5 class="card-title fw-semibold"><%= campground.title %></h5>
+            <p class="card-text">
+                <small class="text-muted"><%= campground.location %></small>
+            </p>
+        </div>
+        <div class="card-footer">
+            <div class="card-text">
+                <div class="fw-semibold d-inline-block">$<%= campground.price %></div>
+                night
+            </div>
+        </div>
+    </a>
+</div>

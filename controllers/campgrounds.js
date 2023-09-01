@@ -6,9 +6,18 @@ const mapBoxToken = process.env.MAPBOX_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapBoxToken });
 
 module.exports.index = async (req, res) => {
-    const campgrounds = await Campground.find({});
+    const campgroundPerPage = 28;
+    const { page = 1 } = req.query;
+    const campgrounds = await Campground.find({})
+        .limit(campgroundPerPage * 1)
+        .skip((page - 1) * campgroundPerPage);
 
-    res.render("campgrounds/index", { campgrounds });
+    const count = await Campground.countDocuments();
+    res.render("campgrounds/index", {
+        campgrounds,
+        totalPages: Math.ceil(count / campgroundPerPage),
+        page,
+    });
 };
 
 module.exports.renderNewForm = (req, res) => {

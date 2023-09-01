@@ -1,0 +1,44 @@
+@import "reset.css";
+
+.card a {
+    text-decoration: none;
+}
+
+.card {
+    border-radius: 8px;
+    border-style: none;
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.005);
+    
+}
+
+.carousel-img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.carousel-control-next {
+    visibility: hidden;
+}
+
+.card:hover .carousel-control-next {
+    visibility: visible;
+}
+
+@media only screen and (max-width: 992px)  {
+    .carousel-img {
+        height: 30vw;
+    }
+}
+
+@media only screen and (max-width: 768px)  {
+    .carousel-img {
+        height: 50vw;
+    }
+}

@@ -1,0 +1,25 @@
+.nav-link, .navbar-brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+.nav-btn {
+    border: 2px solid #333;
+    box-sizing: border-box;
+    margin-left: 20px;
+    border-radius: 8px;
+    color: rgb(248,249,250);
+    background-color: #333;
+}
+
+.nav-btn:hover {
+    color: #333;
+    background-color: rgb(248,249,250);
+    transition: all 0.3s ease-out;
+}
