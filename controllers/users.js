@@ -9,7 +9,7 @@ module.exports.renderRegister = (req, res) => {
 };
 
 module.exports.login = (req, res) => {
-    req.flash("success", "welcome back!");
+    req.flash("success", `Welcome Back ${req.user.username}!`);
     const redirectUrl = res.locals.returnTo || "/";
     delete req.session.returnTo;
 

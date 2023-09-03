@@ -11,10 +11,15 @@
             rel="stylesheet"
             integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
             crossorigin="anonymous" />
-        <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+        <link
+            crossorigin="anonymous"
+            href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+            rel="stylesheet" />
         <link rel="stylesheet" href="/stylesheets/app.css" />
 
-        <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+        <script
+            crossorigin="anonymous"
+            src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
         <script
             defer
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -29,8 +34,10 @@
     </head>
     <body class="d-flex flex-column vh-100">
         <%- include('../partials/navbar.ejs')%>
+        <div class="d-flex justify-content-center"><%- include('../partials/flash')%></div>
+
         <main class="container flex-grow-1 d-flex flex-column justify-content-center">
-            <%- include('../partials/flash.ejs')%> <%- body %>
+            <%- body %>
         </main>
         <%- include('../partials/footer.ejs')%>
     </body>

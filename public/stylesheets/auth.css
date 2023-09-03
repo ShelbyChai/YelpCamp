@@ -13,9 +13,7 @@ body {
 .navbar-brand {
     padding: 16px 5px;
     margin: 24px 0 0 40px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    display: inline-block;
     font-size: 20px;
 }
 

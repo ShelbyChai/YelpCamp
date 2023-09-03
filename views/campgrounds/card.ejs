@@ -19,6 +19,7 @@
                 <% campground.images.forEach((imgs, i) => { %>
                 <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
                     <img
+                        crossorigin="anonymous"
                         src="<%= imgs.url %>"
                         class="carousel-img d-block w-100"
                         alt="Slide <%= i %>" />
@@ -36,6 +37,7 @@
         </div>
         <% } else { %>
         <img
+            crossorigin="anonymous"
             class="card-img-top"
             alt="images"
             src="https://www.orientalfire.co.za/wp-content/themes/panama/assets/img/empty/600x600.png" />
