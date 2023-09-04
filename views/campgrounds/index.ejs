@@ -9,7 +9,9 @@
     <nav
         class="d-flex justify-content-center align-items-center my-5"
         aria-label="Page navigation ">
-        <% if(totalPages > 0) { %>
+        <% if(totalPages == 0) { %>
+            <p class="fs-3 text-muted">No Campground Found! &#40;╯°□°&#41;╯︵ ┻━┻</p>
+        <% } else { %>
         <ul class="pagination">
             <li class="page-item <%= page == 1 ? 'disabled' : '' %>">
                 <a class="page-link text-black" href="#" aria-label="Previous">

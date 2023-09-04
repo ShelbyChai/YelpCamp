@@ -8,6 +8,7 @@ const geocodingClient = mbxGeocoding({ accessToken: mapBoxToken });
 module.exports.index = async (req, res) => {
     const campgroundPerPage = 28;
     const { page = 1 } = req.query;
+
     const campgrounds = await Campground.find({})
         .limit(campgroundPerPage * 1)
         .skip((page - 1) * campgroundPerPage);

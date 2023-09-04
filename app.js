@@ -12,6 +12,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
+const MongoStore = require("connect-mongo");
 
 const ExpressError = require("./utils/expressError");
 const methodOverride = require("method-override");
@@ -22,8 +23,12 @@ const reviewRoutes = require("./routes/reviews");
 
 const User = require("./models/user");
 
+const dbURL = process.env.DB_URL || "mongodb://localhost:27017/yelp-camp";
+const secretKey = process.env.SECRET_KEY || "examplesecretkey";
+
 const main = async () => {
-    await mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp");
+    await mongoose.connect(dbURL);
+    console.log("Database connected");
 };
 
 // Connects to MongoDB
@@ -38,9 +43,22 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
+const store = MongoStore.create({
+    mongoUrl: dbURL,
+    touchAfter: 24 * 3600,
+    crypto: {
+        secret: secretKey,
+    },
+});
+
+store.on("error", (e) => {
+    console.log("Session error", e);
+});
+
 const sessionConfig = {
+    store,
     name: "session",
-    secret: "secretKey",
+    secret: secretKey,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -124,8 +142,6 @@ app.use("/", userRoutes);
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
-const Campground = require("./models/campground");
-
 app.get("/", (req, res) => {
     res.render("home");
 });
@@ -140,7 +156,9 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error", { err });
 });
 
-// Listen to port 3000
-app.listen(3000, () => {
-    console.log("Serving on port 3000");
+// Listen to port
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`);
 });
